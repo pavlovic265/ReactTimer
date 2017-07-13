@@ -16,7 +16,6 @@ var Main = (props) => {
     )
 };
 
-
 module.exports = Main;
 var old = (
     <h2>Main Component</h2>
