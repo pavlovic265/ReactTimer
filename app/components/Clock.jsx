@@ -7,7 +7,7 @@ var Clock = React.createClass({
     propTypes: {
         totalSeconds: React.PropTypes.number
     },
-    formatSeconds: function(totalSeconds){
+    formatSeconds: function(totalSeconds = 0){
         var seconds = totalSeconds % 60;
         var minutes = Math.floor(totalSeconds / 60);
 

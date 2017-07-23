@@ -31,21 +31,36 @@ describe('Countdown', () => {
 
             countdown.handleSetCountdown(1);
 
-            setTimeout(() => {
+            setTimeout(() => { 
                 expect(countdown.state.count).toBe(0);
                 done();
             }, 3001)
         });
+        it('should pause countdown on pause status', (done) => {
+            var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+            var $el = $(ReactDOM.findDOMNode(countdown));
+
+            countdown.handleSetCountdown(3);
+            countdown.handleStatusChange('paused');
+
+            setTimeout(() => {
+                expect(countdown.state.count).toBe(3);
+                expect(countdown.state.countdownStatus).toBe('paused');
+                done();
+            }, 2000)
+        });
+        it('should reset the count on stopped', (done) => {
+            var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+            var $el = $(ReactDOM.findDOMNode(countdown));
+
+            countdown.handleSetCountdown(3);
+            countdown.handleStatusChange('stopped');
+
+            setTimeout(() => {
+                expect(countdown.state.count).toBe(0);
+                expect(countdown.state.countdownStatus).toBe('stopped');
+                done();
+            }, 2000)
+        });
     });
-    // it('should not call onSetCountdown if invalid seconds entered', () => {
-    //     var spy = expect.createSpy();
-    //     var countdownForm = TestUtils.renderIntoDocument(<CountdownForm onSetCountdown={spy}/>);
-    //     var $el = $(ReactDOM.findDOMNode(countdownForm));
-
-    //     countdownForm.refs.seconds.value = '109b';
-
-    //     TestUtils.Simulate.submit($el.find('form')[0]);
-
-    //     expect(spy).toNotHaveBeenCalled();
-    // });
 });
