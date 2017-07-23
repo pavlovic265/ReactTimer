@@ -6,7 +6,11 @@ module.exports = function(config) {
          browsers: ['Chrome'],
          singleRun: true,
          frameworks: ['mocha'], // use mocha for testing
-         files: ['app/tests/**/*.test.jsx'],// path to test we want to execute
+         files: [
+            'node_modules/jquery/dist/jquery.min.js',
+            'node_modules/foundation-sites/dist/foundation.min.js',
+             'app/tests/**/*.test.jsx'
+            ],// path to test we want to execute
          preprocessors:{  //things we want to do with our test objects
             'app/tests/**/*.test.jsx': ['webpack', 'sourcemap']
          },
