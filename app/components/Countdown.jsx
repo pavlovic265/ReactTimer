@@ -29,10 +29,6 @@ var Countdown = React.createClass({
         }
     },
 
-    componentWillUpdate: function(nextProps, nextState){
-
-    },
-
     statTimer: function(){
         this.timer = setInterval(() => {
             var newCount = this.state.count - 1;
